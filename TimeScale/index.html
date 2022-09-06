@@ -1,0 +1,102 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/style.css">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <div class="chart-container">
+        <canvas id="chart"></canvas>
+    </div>
+</body>
+
+<script>
+
+    const data = {
+        datasets: [
+            {
+                label: 'Entrada',
+                backgroundColor: 'rgb(25,25,112)',
+                borderColor: 'rgb(25,25,112)',
+                borderWidth: 1,
+                pointRadius: 0,
+                data: [
+                    { x: '21/06/2022 13:00:00', y: 20 },
+                    { x: '21/06/2022 14:00:00', y: 40 },
+                    { x: '21/06/2022 15:00:00', y: 60 },
+                    { x: '21/06/2022 16:00:00', y: 50 },
+                    { x: '21/06/2022 17:00:00', y: 40 },
+                    { x: '22/06/2022 01:00:00', y: 20 }
+                ]
+            },
+            {
+                label: 'Saída',
+                backgroundColor: 'rgb(60,179,113)',
+                borderColor: 'rgb(60,179,113)',
+                borderWidth: 1,
+                pointRadius: 0,
+                data: [
+                    { x: '21/06/2022 13:00:00', y: 30 },
+                    { x: '21/06/2022 14:00:00', y: 35 },
+                    { x: '21/06/2022 15:00:00', y: 30 },
+                    { x: '21/06/2022 16:00:00', y: 20 },
+                    { x: '21/06/2022 17:00:00', y: 20 },
+                    { x: '22/06/2022 01:00:00', y: 20 }
+                ]
+            }
+        ]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            },
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        parser: "dd/MM/yyyy HH:mm:ss",
+                        displayFormats: {
+                            'minute': 'HH:mm:ss',
+                            'hour': 'HH:mm:ss',
+                            'day': 'dd/MM/yyyy HH:mm:ss',
+                            'week': 'dd/MM/yyyy HH:mm:ss',
+                            'month': 'dd/MM/yyyy',
+                            'quarter': 'dd/MM/yyyy',
+                            'year': 'dd/MM/yyyy',
+                        },
+                        tooltipFormat: 'd MMM yyyy H:mm'
+                    },
+                    ticks: {
+                        autoSkip: true,
+                        maxTicksLimit: 20
+                    }
+                },
+                y: {
+                    ticks: {
+                        stepSize: 5
+                    },
+                    beginAtZero: true,
+                }
+            }
+        }
+    };
+
+    const myChart = new Chart(
+        document.getElementById('chart'),
+        config
+    );
+
+</script>
+
+</html>

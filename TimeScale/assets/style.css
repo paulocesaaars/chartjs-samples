@@ -1,0 +1,10 @@
+body {
+    margin:0 auto;
+    font-family: Calibri, Verdana;
+    padding: 20px;
+}
+
+.chart-container {
+    padding-top: 40px;
+    width:100%;
+}
